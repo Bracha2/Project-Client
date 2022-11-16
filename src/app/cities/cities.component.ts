@@ -9,13 +9,12 @@ import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
   styleUrls: ['./cities.component.scss']
 })
 export class CitiesComponent implements OnInit, OnChanges {
-  @Input() arrCities: string[]=[]
-  @Input() arrkey: number[]=[]
+  @Input() arrCities: {key:number, city:string}[]=[]
   cityElemnt: any
   cityName!: string
   temperature!: number
   WeatherText!: string
-  keyCity!: number
+  selctedCity!: {key:number,city:string}|undefined
 
   constructor(private _citiesService: CitiesService, private _favoritesService: FavoritesService) { }
 
@@ -28,19 +27,21 @@ export class CitiesComponent implements OnInit, OnChanges {
       this.WeatherText = ''
     }
   }
-  theCity(city: string, index: number) {
+  theCity(index: number) {
     if (this.cityElemnt)
       this.cityElemnt.style.border = "";
     this.cityElemnt = document.getElementById(`__title__${index}`)
     this.cityElemnt.style.border = "solid 2px brown ";
-    this.keyCity = this.arrkey[index];
-    this._favoritesService.saveCityKey(this.keyCity);
-    this._citiesService.getWeatherByCity(this.arrkey[index])
+    this.selctedCity = this.arrCities.find(c=>c.key==index)
+    if(this.selctedCity){
+    this._favoritesService.saveCityKey(this.selctedCity?.key);
+    this._citiesService.getWeatherByCity(this.selctedCity?.key)
       .subscribe(weather => {
-      // this.WeatherText=weather.Weather
-      // this.temperature=weather.Temperature
+      this.WeatherText=weather.Weather
+      this.temperature=weather.Temperature
       });
-    this.cityName = city
+    this.cityName = this.selctedCity.city
+    }
   }
 
 }

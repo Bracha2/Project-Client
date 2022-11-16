@@ -1,6 +1,6 @@
 <div>
     <div class="machCitys" *ngFor="let city of arrCities;let i=index">
-        <p [attr.id]="'__title__' + i" (click)="theCity(city,i)">{{city}}</p>
+        <p [attr.id]="'__title__' + i" (click)="theCity(city.key)">{{city.city}}</p>
     </div>
 
     <div *ngIf="arrCities.length>0">

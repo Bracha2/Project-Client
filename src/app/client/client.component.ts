@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ClientComponent implements OnInit {
 
   cityToSearch: string = ''
-  arrOfSearch: string[] = [];
+  arrOfSearch: {key:number, city:string}[] = [];
   arrkey: number[] = [];
   constructor(private _citiesService: CitiesService) {
   }
@@ -23,8 +23,7 @@ export class ClientComponent implements OnInit {
     this.arrOfSearch = []
     if (this.cityToSearch === '') return
     this._citiesService.getCities(this.cityToSearch).subscribe((cities) => {
-     this.arrOfSearch.push(cities.LocalizedName)
-     this.arrkey.push(cities.key)
+     this.arrOfSearch.push({key:cities.key,city:cities.LocalizedName})
     });
   }
 }

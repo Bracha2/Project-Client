@@ -12,10 +12,10 @@ export class CitiesService {
   constructor(private _http: HttpClient) {
   }
   getCities(cityName: string): Observable<any> {
-    return this._http.get(`${this.URL}/WeatherForecast/?city:${cityName}`);
+    return this._http.get(`${this.URL}/WeatherForecast?city:${cityName}`);
   }
-  getWeatherByCity(key: number): Observable<number> {
-    return this._http.get<number>(`${this.URL}WeatherByCity/?key:${key}`)
+  getWeatherByCity(key: number): Observable<any> {
+    return this._http.get<any>(`${this.URL}WeatherByCity?key:${key}`)
   }
 
 }

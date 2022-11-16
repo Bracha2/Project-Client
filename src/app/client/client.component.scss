@@ -1,0 +1,29 @@
+#serach {
+    text-align: center;
+    margin-top: 50PX;
+}
+
+#inputSerach {
+    width: 300px;
+    height: 60px;
+    border: 2PX solid brown;
+    box-shadow: 5px 5px 10px 10px rgb(212, 207, 207);
+}
+
+#buttonSerach {
+    margin-right: 6%;
+    width: 150px;
+    height: 60px;
+    font-size: 30PX;
+    font-family: Bernard MT Condensed;
+    
+}
+
+#line {
+    border-left: 5px solid brown;
+    height: 600px;
+    position: absolute;
+    left: 80%;
+    margin-left: -3px;
+    top: 50px;
+}

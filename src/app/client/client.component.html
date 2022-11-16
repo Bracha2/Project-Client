@@ -1,0 +1,7 @@
+<div id="serach">
+    <button id="buttonSerach" (click)="findCities()">search</button>
+    <input id="inputSerach" type="text" [(ngModel)]="cityToSearch" (ngModelChange)="findCities()">
+    <div id="line"></div>
+    <app-cities [arrCities]="arrOfSearch" [arrkey]="arrkey"></app-cities>
+    
+</div>

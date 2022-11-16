@@ -1,0 +1,14 @@
+<div>
+    <div class="machCitys" *ngFor="let city of arrCities;let i=index">
+        <p [attr.id]="'__title__' + i" (click)="theCity(city,i)">{{city}}</p>
+    </div>
+
+    <div *ngIf="arrCities.length>0">
+        <div>{{cityName}}</div>
+        <div>{{temperature}}</div>
+        <div>{{WeatherText}}</div>
+    </div>
+    <div *ngIf="cityName!==''">
+        <app-favorites [cityName]="cityName"></app-favorites>
+    </div>
+</div>

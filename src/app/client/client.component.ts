@@ -23,7 +23,10 @@ export class ClientComponent implements OnInit {
     this.arrOfSearch = []
     if (this.cityToSearch === '') return
     this._citiesService.getCities(this.cityToSearch).subscribe((cities) => {
-     this.arrOfSearch.push({key:cities.key,city:cities.LocalizedName})
+      cities.contins.forEach((city: { key: any; LocalizedName: any; }) => {
+        this.arrOfSearch.push({key:city.key,city:city.LocalizedName})
+      });
+    
     });
   }
 }
